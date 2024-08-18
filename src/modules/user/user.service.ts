@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Transactional } from 'typeorm-transactional';
 import { UserEntity } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, Repository } from 'typeorm';
 import { UserRegisterDto } from '../auth/dto/user-register.dto';
 
 @Injectable()
@@ -19,5 +19,11 @@ export class UserService {
     await this.userRepository.save(user);
 
     return user;
+  }
+
+  async findOne(
+    findData: FindOptionsWhere<UserEntity>,
+  ): Promise<UserEntity | null> {
+    return this.userRepository.findOneBy(findData);
   }
 }

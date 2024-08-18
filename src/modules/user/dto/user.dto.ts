@@ -7,7 +7,7 @@ import {
   PhoneFieldOptional,
   StringFieldOptional,
 } from '../../../decorators/field.decorators';
-import { RoleType } from '../../../constants/role-type';
+import { RoleType } from '../../../common/constants/role-type';
 
 // TODO, remove this class and use constructor's second argument's type
 export type UserDtoOptions = Partial<{ isActive: boolean }>;

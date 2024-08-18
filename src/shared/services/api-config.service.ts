@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { isNil } from 'lodash';
 import { ConfigService } from '@nestjs/config';
-import {UserSubscribers} from "../../entity-suscribers/user-subscribers";
+import { UserSubscribers } from '../../entity-suscribers/user-subscribers';
 
 @Injectable()
 export class ApiConfigService {
@@ -82,5 +82,13 @@ export class ApiConfigService {
     }
 
     return value;
+  }
+
+  get authConfig() {
+    return {
+      privateKey: this.getString('JWT_PRIVATE_KEY'),
+      publicKey: this.getString('JWT_PUBLIC_KEY'),
+      jwtExpirationTime: this.getNumber('JWT_EXPIRATION_TIME'),
+    };
   }
 }

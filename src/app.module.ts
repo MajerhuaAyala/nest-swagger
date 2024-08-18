@@ -7,6 +7,7 @@ import { addTransactionalDataSource } from 'typeorm-transactional';
 import { DataSource } from 'typeorm';
 import { SharedModule } from './shared/shared.module';
 import { ApiConfigService } from './shared/services/api-config.service';
+import {ClsModule} from "nestjs-cls";
 
 @Module({
   imports: [
@@ -15,6 +16,12 @@ import { ApiConfigService } from './shared/services/api-config.service';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+    }),
+    ClsModule.forRoot({
+      global: true,
+      middleware: {
+        mount: true,
+      },
     }),
     TypeOrmModule.forRootAsync({
       imports: [SharedModule],
