@@ -9,7 +9,7 @@ async function bootstrap() {
   const logger = new Logger();
   const PORT = 3000;
   const app = await NestFactory.create(AppModule);
-  app.enableVersioning()
+  app.enableVersioning();
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')

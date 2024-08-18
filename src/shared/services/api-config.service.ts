@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { isNil } from 'lodash';
 import { ConfigService } from '@nestjs/config';
+import {UserSubscribers} from "../../entity-suscribers/user-subscribers";
 
 @Injectable()
 export class ApiConfigService {
@@ -67,6 +68,7 @@ export class ApiConfigService {
       username: this.getString('DB_USERNAME'),
       password: this.getString('DB_PASSWORD'),
       database: this.getString('DB_DATABASE'),
+      subscribers: [UserSubscribers],
       migrationsRun: true,
       logging: this.getBoolean('ENABLE_ORM_LOGS'),
     };
