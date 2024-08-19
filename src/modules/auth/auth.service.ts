@@ -5,13 +5,14 @@ import { UserService } from '../user/user.service';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserEntity } from '../user/user.entity';
 import { validateHash } from '../../common/utils';
-import {RoleType} from "../../common/constants/role-type";
-import {Uuid} from "../../common/dto/abstract.dto";
-import {TokenPayloadDto} from "./dto/token-payload.dto";
-import {TokenType} from "../../common/constants/token-type";
+import { RoleType } from '../../common/constants/role-type';
+import { Uuid } from '../../common/dto/abstract.dto';
+import { TokenPayloadDto } from './dto/token-payload.dto';
+import { TokenType } from '../../common/constants/token-type';
+import { AuthServiceInterface } from './interfaces/auth-service-interface';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements AuthServiceInterface {
   constructor(
     private jwtService: JwtService,
     private configService: ApiConfigService,
@@ -31,7 +32,6 @@ export class AuthService {
       }),
     });
   }
-
 
   async validateUser(userLoginDto: UserLoginDto): Promise<UserEntity> {
     const user = await this.userService.findOne({

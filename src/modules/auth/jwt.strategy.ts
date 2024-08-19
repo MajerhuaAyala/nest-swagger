@@ -5,9 +5,9 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { ApiConfigService } from '../../shared/services/api-config.service';
 import type { UserEntity } from '../user/user.entity';
 import { UserService } from '../user/user.service';
-import {TokenType} from "../../common/constants/token-type";
-import {RoleType} from "../../common/constants/role-type";
-import {Uuid} from "../../common/dto/abstract.dto";
+import { TokenType } from '../../common/constants/token-type';
+import { RoleType } from '../../common/constants/role-type';
+import { Uuid } from '../../common/dto/abstract.dto';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

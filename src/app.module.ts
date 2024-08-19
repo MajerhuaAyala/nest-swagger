@@ -7,7 +7,7 @@ import { addTransactionalDataSource } from 'typeorm-transactional';
 import { DataSource } from 'typeorm';
 import { SharedModule } from './shared/shared.module';
 import { ApiConfigService } from './shared/services/api-config.service';
-import {ClsModule} from "nestjs-cls";
+import { ClsModule } from 'nestjs-cls';
 
 @Module({
   imports: [

@@ -1,11 +1,11 @@
-import {forwardRef, Module} from '@nestjs/common';
-import {AuthController} from './auth.controller';
-import {UserModule} from '../user/user.module';
-import {JwtModule} from "@nestjs/jwt";
-import {ApiConfigService} from "../../shared/services/api-config.service";
-import {AuthService} from "./auth.service";
-import {JwtStrategy} from "./jwt.strategy";
-import {PublicStrategy} from "./public.strategy";
+import { forwardRef, Module } from '@nestjs/common';
+import { AuthController } from './auth.controller';
+import { UserModule } from '../user/user.module';
+import { JwtModule } from '@nestjs/jwt';
+import { ApiConfigService } from '../../shared/services/api-config.service';
+import { AuthService } from './auth.service';
+import { JwtStrategy } from './jwt.strategy';
+import { PublicStrategy } from './public.strategy';
 
 @Module({
   imports: [
@@ -15,18 +15,17 @@ import {PublicStrategy} from "./public.strategy";
         privateKey: configService.authConfig.privateKey,
         publicKey: configService.authConfig.publicKey,
         signOptions: {
-          algorithm: 'RS256'
+          algorithm: 'RS256',
         },
         verifyOptions: {
-          algorithms: ['RS256']
-        }
+          algorithms: ['RS256'],
+        },
       }),
-      inject: [ApiConfigService]
-    })
+      inject: [ApiConfigService],
+    }),
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, PublicStrategy],
-  exports: [JwtModule, AuthService]
+  exports: [JwtModule, AuthService],
 })
-export class AuthModule {
-}
+export class AuthModule {}
