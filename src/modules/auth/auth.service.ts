@@ -9,7 +9,7 @@ import { RoleType } from '../../common/constants/role-type';
 import { Uuid } from '../../common/dto/abstract.dto';
 import { TokenPayloadDto } from './dto/token-payload.dto';
 import { TokenType } from '../../common/constants/token-type';
-import { AuthServiceInterface } from './interfaces/auth-service-interface';
+import { AuthServiceInterface } from './interfaces/auth-service.interface';
 
 @Injectable()
 export class AuthService implements AuthServiceInterface {

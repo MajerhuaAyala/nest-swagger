@@ -4,9 +4,10 @@ import { UserEntity } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere, Repository } from 'typeorm';
 import { UserRegisterDto } from '../auth/dto/user-register.dto';
+import {UserServiceInterface} from "./interfaces/user-service.interface";
 
 @Injectable()
-export class UserService {
+export class UserService implements UserServiceInterface{
   constructor(
     @InjectRepository(UserEntity)
     private userRepository: Repository<UserEntity>,
